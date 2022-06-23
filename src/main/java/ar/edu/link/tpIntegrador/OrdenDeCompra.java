@@ -6,7 +6,6 @@ public class OrdenDeCompra {
 	
 	private List<Producto> productosComprados;
 	private double totalEnPesos;
-	private double totalEnDolares;
 	private int cantidadDeProductos;
 	private String medioDePago;
 	
@@ -23,12 +22,6 @@ public class OrdenDeCompra {
 	public void setTotalEnPesos(double totalEnPesos) {
 		this.totalEnPesos = totalEnPesos;
 	}
-	public double getTotalEnDolares() {
-		return totalEnDolares;
-	}
-	public void setTotalEnDolares(double totalEnDolares) {
-		this.totalEnDolares = totalEnDolares;
-	}
 	public int getCantidadDeProductos() {
 		return cantidadDeProductos;
 	}
@@ -41,6 +34,8 @@ public class OrdenDeCompra {
 	public void setMedioDePago(String medioDePago) {
 		this.medioDePago = medioDePago;
 	}
+	
+	
 	
 	
 }

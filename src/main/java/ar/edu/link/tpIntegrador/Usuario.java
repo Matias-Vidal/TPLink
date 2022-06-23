@@ -1,11 +1,81 @@
 package ar.edu.link.tpIntegrador;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Usuario {
 	
 	private String userName; 
 	private String password;
-	private boolean esAdmin;
+	private int rol;
+	private String nombreYApellido;
+	private String mail;
+	private String tipoDeDocumento;
+	private int nroDeDocumento;
+	private List<Tarjeta> tarjetasGuardadas;
+	private List<OrdenDeCompra> comprasRealizadas;
+	private Carrito carritoDeCompras;
 	
+	
+	public Usuario(String userName, String password, int rol, String nombreYApellido, String mail,
+			String tipoDeDocumento, int nroDeDocumento) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.rol = rol;
+		this.nombreYApellido = nombreYApellido;
+		this.mail = mail;
+		this.tipoDeDocumento = tipoDeDocumento;
+		this.nroDeDocumento = nroDeDocumento;
+		this.tarjetasGuardadas = new ArrayList<Tarjeta>();
+		this.comprasRealizadas = new ArrayList<OrdenDeCompra>();
+		this.carritoDeCompras = new Carrito();
+	}
+	public String getNombreYApellido() {
+		return nombreYApellido;
+	}
+	public void setNombreYApellido(String nombreYApellido) {
+		this.nombreYApellido = nombreYApellido;
+	}
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	public String getTipoDeDocumento() {
+		return tipoDeDocumento;
+	}
+	public void setTipoDeDocumento(String tipoDeDocumento) {
+		this.tipoDeDocumento = tipoDeDocumento;
+	}
+	public int getNroDeDocumento() {
+		return nroDeDocumento;
+	}
+	public void setNroDeDocumento(int nroDeDocumento) {
+		this.nroDeDocumento = nroDeDocumento;
+	}
+	public List<Tarjeta> getTarjetasGuardadas() {
+		return tarjetasGuardadas;
+	}
+	public void setTarjetasGuardadas(List<Tarjeta> tarjetasGuardadas) {
+		this.tarjetasGuardadas = tarjetasGuardadas;
+	}
+	public List<OrdenDeCompra> getComprasRealizadas() {
+		return comprasRealizadas;
+	}
+	public void setComprasRealizadas(List<OrdenDeCompra> comprasRealizadas) {
+		this.comprasRealizadas = comprasRealizadas;
+	}
+	public Carrito getCarritoDeCompras() {
+		return carritoDeCompras;
+	}
+	public void agregarProductoACarrito(Producto producto) {
+		carritoDeCompras.agregarProducto(producto);
+	}
+	public void setCarritoDeCompras(Carrito carritoDeCompras) {
+		this.carritoDeCompras = carritoDeCompras;
+	}
 	public String getUserName() {
 		return userName;
 	}
@@ -18,12 +88,18 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public boolean isAdmin() {
-		return esAdmin;
+	public String getRol() {
+		switch (rol) {
+		case 1:
+			return "Admin";
+		default:
+			return "cliente";
+		}
 	}
-	public void setEsAdmin(boolean esAdmin) {
-		this.esAdmin = esAdmin;
-	} 
+	public void setRol(int rol) {
+		this.rol = rol;
+	}
+	
 	
 	
 }

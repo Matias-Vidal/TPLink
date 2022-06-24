@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import ar.edu.link.tpIntegrador.Producto;
 
 @Repository
-public class repoProducto {
+public class repoProducto implements repoProductoI{
 	
 	private Collection<Producto> productos;
 	
@@ -38,8 +38,13 @@ public class repoProducto {
 		this.productos.add(producto);
 		
 	}
+	public void deleteByName(String nombreDeProducto) {
+		productos.remove(this.findByName(nombreDeProducto));
+	}
+	@Override
 	public void delete(Producto producto) {
-		this.productos.remove(producto);
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

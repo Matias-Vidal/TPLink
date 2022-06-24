@@ -4,8 +4,7 @@ public class Promocion {
 	
 	private String nombreDePromo;
 	private int codigoPromo;
-	private String tipoDePromo;
-	private String productosIncluidos;
+	private int descuento;
 	
 	public int getCodigoPromo() {
 		return codigoPromo;
@@ -13,30 +12,23 @@ public class Promocion {
 	public void setCodigoPromo(int codigoPromo) {
 		this.codigoPromo = codigoPromo;
 	}
-	public String getProductosIncluidos() {
-		return productosIncluidos;
-	}
-	public void setProductosIncluidos(String productosIncluidos) {
-		this.productosIncluidos = productosIncluidos;
-	}
 	public String getNombreDePromo() {
 		return nombreDePromo;
 	}
 	public void setNombreDePromo(String nombreDePromo) {
 		this.nombreDePromo = nombreDePromo;
 	}
-	public String getTipoDePromo() {
-		return tipoDePromo;
+	public int getDescuento() {
+		return descuento;
 	}
-	public void setTipoDePromo(String tipoDePromo) {
-		this.tipoDePromo = tipoDePromo;
+	public void setDescuento(int descuento) {
+		this.descuento = descuento;
 	}
-	public Promocion(String nombreDePromo, int codigoPromo, String tipoDePromo, String productosIncluidos) {
+	public Promocion(String nombreDePromo, int codigoPromo, int descuento) {
 		super();
 		this.nombreDePromo = nombreDePromo;
 		this.codigoPromo = codigoPromo;
-		this.tipoDePromo = tipoDePromo;
-		this.productosIncluidos = productosIncluidos;
+		this.descuento = descuento;
 	}
 	
 	

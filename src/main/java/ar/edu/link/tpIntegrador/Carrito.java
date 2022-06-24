@@ -20,13 +20,16 @@ public class Carrito {
 	public void setSubTotal(double subTotal) {
 		this.subTotal = subTotal;
 	}
+	public void aplicarDescuento(int descuento) {
+		subTotal *= (descuento/100);
+	}
 	public void agregarProducto(Producto unProducto) {
 		productosEnCarrito.add(unProducto);
-		subTotal += unProducto.getPrecioDolarEnPesos();
+		subTotal += unProducto.CostoEnPesos();
 	}
 	public void quitarProducto(Producto unProducto) {
 		productosEnCarrito.remove(unProducto);
-		subTotal -=unProducto.getPrecioDolarEnPesos();
+		subTotal -=unProducto.CostoEnPesos();
 		
 	}
 	public Carrito() {
@@ -35,7 +38,6 @@ public class Carrito {
 		this.productosEnCarrito = p ;
 		this.subTotal = 0;
 	}
-	
 	
 	
 }

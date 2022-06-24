@@ -5,10 +5,8 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,30 +20,26 @@ import ar.edu.link.TP.trabajoIntegrador.app.repo.repoProductoI;
 import ar.edu.link.tpIntegrador.Producto;
 
 @RestController
-@RequestMapping("/producto")
-public class ProductoController {
+@RequestMapping("UI/producto")
+public class ProductoControllerUI {
 	
 	@Autowired
 	private repoProductoI repo;
 	
 	@GetMapping("")
-	public Page<Producto> list(Pageable page) {
+	public String list(Pageable page, Model model) {
 		
 		List<Producto> all = new ArrayList<>(repo.all());
-		
-		int fromIndex = page.getPageNumber() * page.getPageSize();
-		
-		if(fromIndex + page.getPageSize()<all.size()) {
-		return new PageImpl<Producto>(all.subList(fromIndex, fromIndex + page.getPageSize()), page, 2);
-		}else {
-		return new PageImpl<Producto>(all.subList(fromIndex, all.size()), page, 2);
-		}
+		model.addAttribute("ListadoDeProductos", all);
+		return "ListadoDeProductos";
 	}
 	
 	
 	@GetMapping("/{nombre}")
-	public Producto get(@PathVariable("nombre") String nombreProducto) {
-		return repo.findByName(nombreProducto);
+	public String get(@PathVariable("nombre") String nombreProducto, Model model) {
+		
+		model.addAttribute("producto.html", repo.findByName(nombreProducto));
+		return "producto.html";
 	}
 	@GetMapping("/category={categoria}")
 	public Collection<Producto> list(@PathVariable("categoria") String categoriaDeProducto){
@@ -57,14 +51,9 @@ public class ProductoController {
 		repo.save(producto);
 	}
 	@DeleteMapping("")
-	public void delete(@RequestBody Producto producto,Pageable page) {
-		List<Producto> all = new ArrayList<>(repo.all());
-		
-		all.clear();
-		
+	public void delete(@RequestBody Producto producto) {
+		repo.delete(producto);
 	}
-	
-	
 	
 	
 }

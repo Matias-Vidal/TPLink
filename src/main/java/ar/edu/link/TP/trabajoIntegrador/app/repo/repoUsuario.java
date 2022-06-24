@@ -20,8 +20,8 @@ public class repoUsuario {
 
 	public repoUsuario() {
 		super();
-		List<Usuario> of = Arrays.asList(new Usuario("Matias","asdf",2,"Matias Vidal","DNI","a@gmail.com", 41738132),
-										 new Usuario("Jose","asdf",0,"Jose jos","DNI","s@gmail.com",40234532));
+		List<Usuario> of = Arrays.asList(new Usuario("Matias","asdf",2,"Matias Vidal","a@gmail.com","DNI", 41738132),
+										 new Usuario("Jose","asdf",0,"Jose jos","s@gmail.com","DNI",40234532));
 		usuariosRegistrados = new ArrayList<Usuario>(of); 
 	}
 	
@@ -32,7 +32,7 @@ public class repoUsuario {
 		return usuariosRegistrados.stream().filter(x -> x.getUserName().equals(username)).findFirst().get();
 	}
 	public Usuario findPassword(String password) {
-		return usuariosRegistrados.stream().filter(x -> x.getPassword().equals(password)).findFirst().get();
+		return usuariosRegistrados.stream().filter(x -> x.password().equals(password)).findFirst().get();
 	}
 	
 }

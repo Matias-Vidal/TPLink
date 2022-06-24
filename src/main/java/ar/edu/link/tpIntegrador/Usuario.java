@@ -1,9 +1,24 @@
 package ar.edu.link.tpIntegrador;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+import org.thymeleaf.expression.Arrays;
+
+
+
+@Entity
 public class Usuario {
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer ID;
 	
 	private String userName; 
 	private String password;
@@ -12,8 +27,11 @@ public class Usuario {
 	private String mail;
 	private String tipoDeDocumento;
 	private int nroDeDocumento;
+	@Transient
 	private List<Tarjeta> tarjetasGuardadas;
+	@Transient
 	private List<OrdenDeCompra> comprasRealizadas;
+	@Transient
 	private Carrito carritoDeCompras;
 	
 	
@@ -82,7 +100,7 @@ public class Usuario {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getPassword() {
+	public String password() {
 		return password;
 	}
 	public void setPassword(String password) {

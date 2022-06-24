@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ar.edu.link.TP.trabajoIntegrador.app.repo.repoUsuario;
 import ar.edu.link.tpIntegrador.Carrito;
 import ar.edu.link.tpIntegrador.Producto;
+import ar.edu.link.tpIntegrador.Tarjeta;
 import ar.edu.link.tpIntegrador.Usuario;
 
 @RestController
@@ -39,6 +40,14 @@ public class usuarioController {
 	@PostMapping("/{usuario}/carrito")
 	public void post(@PathVariable("usuario") String userName,@RequestBody Producto producto) {
 		repoUser.findByName(userName).agregarProductoACarrito(producto);
+	}
+	@PostMapping("/{usuario}/carrito/compra")
+	public void post(@PathVariable("usuario") String username,@RequestBody Tarjeta tarjeta) {
+		if(tarjeta.getTipoDeTarjeta().equals("credito")) {
+			repoUser.findByName(username).getCarritoDeCompras().aplicarDescuento(20);
+		}else {
+			repoUser.findByName(username).getCarritoDeCompras().aplicarDescuento(5);
+		}
 	}
 	
 }

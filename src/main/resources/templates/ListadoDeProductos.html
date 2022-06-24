@@ -1,0 +1,24 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<body>
+<h1>Listado de Productos</h1>
+
+<ol>
+	<li th:each="producto : $(producto)">
+		<span th:text="$(producto.nombreDeProducto)"> nombre</span>
+		<span th:text="$(producto.precioUnitario)"> precio</span>
+		<span th:text="$(producto.divisa)"> divisa</span>
+		<span th:text="$(producto.categoriaDeProducto)"> categoria</span>
+	</li>
+</ol>
+
+<form th:action="@(/producto/)" method="post">
+	nombreDeProducto: <input type="text" name="nombre" /> <br />
+	precio: <input type="number" name="precio" /> <br />
+	divisa: <input type="text" name="divisa" /> <br />
+	categoria: <input type="text" name="categoria" /> <br />
+
+	<input type="submit" />
+</form>
+
+	</body>
+</html>

@@ -38,6 +38,11 @@ public class Carrito {
 		this.productosEnCarrito = p ;
 		this.subTotal = 0;
 	}
+	public void clear() {
+		productosEnCarrito.clear();
+		subTotal =0;
+		
+	}
 	
 	
 }

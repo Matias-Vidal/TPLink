@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ar.edu.link.TP.trabajoIntegrador.app.DTO.productoDTO;
 import ar.edu.link.TP.trabajoIntegrador.app.repo.repoProducto;
 import ar.edu.link.TP.trabajoIntegrador.app.repo.repoProductoI;
 import ar.edu.link.tpIntegrador.Producto;
@@ -26,6 +30,7 @@ import ar.edu.link.tpIntegrador.Producto;
 public class ProductoController {
 	
 	@Autowired
+	@Qualifier("Mem")
 	private repoProductoI repo;
 	
 	@GetMapping("")
@@ -52,9 +57,10 @@ public class ProductoController {
 		return repo.findByCategory(categoriaDeProducto);
 	}
 	
+	@Transactional
 	@PostMapping("")
-	public void post(@RequestBody Producto producto) {
-		repo.save(producto);
+	public void post(@RequestBody productoDTO producto) {
+		repo.save2(producto);
 	}
 	@DeleteMapping("")
 	public void delete(@RequestBody Producto producto,Pageable page) {

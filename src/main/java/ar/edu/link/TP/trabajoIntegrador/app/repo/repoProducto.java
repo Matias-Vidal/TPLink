@@ -6,12 +6,22 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.persistence.EntityManager;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.link.TP.trabajoIntegrador.app.DTO.productoDTO;
 import ar.edu.link.tpIntegrador.Producto;
 
 @Repository
+@Qualifier("Mem")
 public class repoProducto implements repoProductoI{
+	
+	
+	@Autowired
+	public EntityManager em;
 	
 	private Collection<Producto> productos;
 	
@@ -35,8 +45,12 @@ public class repoProducto implements repoProductoI{
 				.equals(categoriaDeProducto.toLowerCase())).collect(Collectors.toList());
 	}
 	public void save(Producto producto) {
-		this.productos.add(producto);
-		
+		//this.productos.add(producto);
+		em.persist(producto);
+	}
+	public void save2(productoDTO producto) {
+		//this.productos.add(producto);
+		em.persist(producto);
 	}
 	public void deleteByName(String nombreDeProducto) {
 		productos.remove(this.findByName(nombreDeProducto));

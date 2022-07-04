@@ -25,4 +25,8 @@ public class repoPromocion {
 		return promociones.stream().filter(x -> x.getNombreDePromo().toLowerCase()
 				.equals(promocion.toLowerCase())).findFirst().get();
 	}
+
+	public Collection<Promocion> all() {
+		return promociones;
+	}
 }

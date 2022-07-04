@@ -5,12 +5,19 @@
 
 	<tr>
 		<td>NombreProducto</td>
-		<td th:text="${producto.nombreDeProducto}">dds</td>
+		<td th:text="${producto.nombreDeProducto}">    </td>
+	</tr>
+	
+		<td>Precio</td>
+		<td th:text="${producto.precioUnitario}"></td>
+	<tr>
+		<td>Divisa</td>
+		<td th:text="${producto.divisa}"></td>
 	</tr>
 	<tr>
-		<td>Precio</td>
-		<td th:text=${producto.precioUnitario}></td>122</tr>
-
+		<td>Categoria</td>
+		<td th:text="${producto.categoriaDeProducto}"></td>
+	</tr>
 	</table>
 
 	</body>

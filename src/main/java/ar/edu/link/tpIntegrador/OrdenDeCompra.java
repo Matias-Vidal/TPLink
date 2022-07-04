@@ -10,6 +10,15 @@ public class OrdenDeCompra {
 	private String medioDePago;
 	
 	
+	
+	public OrdenDeCompra(List<Producto> productosComprados, double totalEnPesos, int cantidadDeProductos,
+			String medioDePago) {
+		super();
+		this.productosComprados = productosComprados;
+		this.totalEnPesos = totalEnPesos;
+		this.cantidadDeProductos = cantidadDeProductos;
+		this.medioDePago = medioDePago;
+	}
 	public List<Producto> getProductosComprados() {
 		return productosComprados;
 	}

@@ -1,39 +1,30 @@
 package ar.edu.link.tpIntegrador;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name="Productos")
 public class Producto {
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="ID")
 	private Integer id;
-	
 	@NotBlank
-	@Column(name="nombreProducto")
 	private String nombreDeProducto;
 	@NotBlank
-	@Column(name="precioUnitario")
 	private double precioUnitario;//Ya sea de cantidad o de peso
 	@NotBlank
-	@Column(name="divisa")
 	private String divisa;//Si esta en dolares(U$D) o en pesos($)
 	@NotBlank
-	@Column(name="categoria")
 	private String categoriaDeProducto;
-	@Transient
-	private Vendedor vendedor;
 	
+
 	
-	
+	protected Producto() {
+		super();
+	}
 	public double getPrecioUnitario() {
 		return precioUnitario;
 	}
@@ -75,12 +66,7 @@ public class Producto {
 		this.divisa = divisa;
 		this.categoriaDeProducto = categoriaDeProducto;
 	}
-	public Vendedor getVendedor() {
-		return vendedor;
-	}
-	public void setVendedor(Vendedor vendedor) {
-		this.vendedor = vendedor;
-	}
+
 	
 }
 

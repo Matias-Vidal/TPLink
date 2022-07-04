@@ -1,0 +1,25 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<body>
+
+<tr>
+		<td>Productos Comprados</td>
+		<td th:text="${carrito.productosEnCarrito}">    </td>
+	</tr>
+	<tr>
+		<td>Valor De Compra</td>
+		<td th:text="${carrito.subTotal}"></td>
+	</tr>
+
+	<select name="transporte">
+
+<option value = 1>Tarjeta de Credito</option>
+
+<option value = 2>Debito</option>
+
+<option value = 3>Efectivo</option>
+
+</select>
+
+</body>
+
+</html>

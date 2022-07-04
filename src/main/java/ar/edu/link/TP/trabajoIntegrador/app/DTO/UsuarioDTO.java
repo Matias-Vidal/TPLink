@@ -1,4 +1,4 @@
-package ar.edu.link.tpIntegrador;
+package ar.edu.link.TP.trabajoIntegrador.app.DTO;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,10 +12,15 @@ import javax.persistence.Transient;
 
 import org.thymeleaf.expression.Arrays;
 
+import ar.edu.link.tpIntegrador.Carrito;
+import ar.edu.link.tpIntegrador.OrdenDeCompra;
+import ar.edu.link.tpIntegrador.Producto;
+import ar.edu.link.tpIntegrador.Tarjeta;
+
 
 
 @Entity
-public class Usuario {
+public class UsuarioDTO {
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer ID;
@@ -35,7 +40,7 @@ public class Usuario {
 	private Carrito carritoDeCompras;
 	
 	
-	public Usuario(String userName, String password, int rol, String nombreYApellido, String mail,
+	public UsuarioDTO(String userName, String password, int rol, String nombreYApellido, String mail,
 			String tipoDeDocumento, int nroDeDocumento) {
 		super();
 		this.userName = userName;

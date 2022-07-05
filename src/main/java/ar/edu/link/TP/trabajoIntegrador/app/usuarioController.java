@@ -9,45 +9,48 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
+import ar.edu.link.TP.trabajoIntegrador.app.DTO.Carrito;
+import ar.edu.link.TP.trabajoIntegrador.app.DTO.Tarjeta;
+import ar.edu.link.TP.trabajoIntegrador.app.DTO.UsuarioDTO;
+import ar.edu.link.TP.trabajoIntegrador.app.DTO.productoDTO;
+import ar.edu.link.TP.trabajoIntegrador.app.repo.RepoTarjetaCrud;
+import ar.edu.link.TP.trabajoIntegrador.app.repo.RepoUsuarioCrud;
 import ar.edu.link.TP.trabajoIntegrador.app.repo.repoUsuario;
-import ar.edu.link.tpIntegrador.Carrito;
-import ar.edu.link.tpIntegrador.Producto;
-import ar.edu.link.tpIntegrador.Tarjeta;
-import ar.edu.link.tpIntegrador.Usuario;
 
 @RestController
 @RequestMapping("/usuarios")
 public class usuarioController {
 
 	@Autowired
-	public repoUsuario repoUser;
+	public RepoUsuarioCrud repoUser;
+	@Autowired
+	public RepoTarjetaCrud repoTar;
 	
 	@GetMapping("")
-	public Collection<Usuario> list(){
-		return repoUser.all();
+	public Collection<UsuarioDTO> list(){
+		return repoUser.findAll();
 	}
 	
 	@GetMapping("/{usuario}")
-	public Usuario get(@PathVariable("usuario") String userName) {
-		return repoUser.findByName(userName);
+	public UsuarioDTO get(@PathVariable("usuario") String userName) {
+		return repoUser.findByUserName(userName);
 	}
 	
 	@GetMapping("/{usuario}/carrito")
 	public Carrito get2(@PathVariable("usuario") String userName) {
-		return repoUser.findByName(userName).getCarritoDeCompras();
+		return repoUser.findByUserName(userName).getCarritoDeCompras();
 	}
 	@PostMapping("/{usuario}/carrito")
-	public void post(@PathVariable("usuario") String userName,@RequestBody Producto producto) {
-		repoUser.findByName(userName).agregarProductoACarrito(producto);
+	public void post(@PathVariable("usuario") String userName,@RequestBody productoDTO producto) {
+		repoUser.findByUserName(userName).agregarProductoACarrito(producto);
 	}
-	@PostMapping("/{usuario}/carrito/compra")
-	public void post(@PathVariable("usuario") String username,@RequestBody Tarjeta tarjeta) {
-		if(tarjeta.getTipoDeTarjeta().equals("credito")) {
-			repoUser.findByName(username).getCarritoDeCompras().aplicarDescuento(20);
-		}else {
-			repoUser.findByName(username).getCarritoDeCompras().aplicarDescuento(5);
-		}
-	}
+//	@PostMapping("/{usuario}/carrito/tarjeta")
+//	public RedirectView post(@PathVariable("usuario") String username) {
+//		repoUser.findByUserName(username).getCarritoDeCompras().setTotal(20);
+//		return new RedirectView("./{usuario}/carrito");
+//		
+//	}
 	
 }

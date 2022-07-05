@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
+import ar.edu.link.TP.trabajoIntegrador.app.DTO.Carrito;
+import ar.edu.link.TP.trabajoIntegrador.app.DTO.OrdenDeCompra;
 import ar.edu.link.TP.trabajoIntegrador.app.repo.repoPromocion;
 import ar.edu.link.TP.trabajoIntegrador.app.repo.repoUsuario;
-import ar.edu.link.tpIntegrador.Carrito;
-import ar.edu.link.tpIntegrador.OrdenDeCompra;
 
 @Controller
 @RequestMapping("usuarios/{usuario}/carrito/compra")

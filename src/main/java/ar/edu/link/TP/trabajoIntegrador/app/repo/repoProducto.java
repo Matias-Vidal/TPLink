@@ -10,10 +10,12 @@ import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.link.TP.trabajoIntegrador.app.DTO.productoDTO;
-import ar.edu.link.tpIntegrador.Producto;
+
 
 @Repository
 @Qualifier("Mem")
@@ -23,28 +25,28 @@ public class repoProducto implements repoProductoI{
 	@Autowired
 	public EntityManager em;
 	
-	private Collection<Producto> productos;
+	private Collection<productoDTO> productos;
 	
 	public repoProducto() {
 		super();
-		List<Producto> of = Arrays.asList(new Producto("auto",1000,"Dolares","Vehiculo"),
-							 	  new Producto("Martillo",15,"Pesos","Herramienta"),
-							 	  new Producto("Moto",500,"Dolares","Vehiculo"),
-							 	  new Producto("Asado",900,"Pesos","Alimento"));
-		productos = new ArrayList<Producto>(of);
+		List<productoDTO> of = Arrays.asList(new productoDTO("auto",1000,"Dolares","Vehiculo"),
+							 	  new productoDTO("Martillo",15,"Pesos","Herramienta"),
+							 	  new productoDTO("Moto",500,"Dolares","Vehiculo"),
+							 	  new productoDTO("Asado",900,"Pesos","Alimento"));
+		productos = new ArrayList<productoDTO>(of);
 	}
-	public Collection<Producto> all(){
+	public Collection<productoDTO> all(){
 		return productos;
 	}
-	public Producto findByName(String nombreDeProducto) {
+	public productoDTO findByName(String nombreDeProducto) {
 		return productos.stream().filter(x -> x.getNombreDeProducto().toLowerCase()
 				.equals(nombreDeProducto.toLowerCase())).findFirst().get();
 	}
-	public Collection<Producto> findByCategory(String categoriaDeProducto){
+	public List<productoDTO> findByCategory(String categoriaDeProducto){
 		return productos.stream().filter(x -> x.getCategoriaDeProducto().toLowerCase()
 				.equals(categoriaDeProducto.toLowerCase())).collect(Collectors.toList());
 	}
-	public void save(Producto producto) {
+	public void save(productoDTO producto) {
 		//this.productos.add(producto);
 		em.persist(producto);
 	}
@@ -56,9 +58,14 @@ public class repoProducto implements repoProductoI{
 		productos.remove(this.findByName(nombreDeProducto));
 	}
 	@Override
-	public void delete(Producto producto) {
+	public void delete(productoDTO producto) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public Page<productoDTO> findByCategory(String categoriaDeProducto, Pageable page) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

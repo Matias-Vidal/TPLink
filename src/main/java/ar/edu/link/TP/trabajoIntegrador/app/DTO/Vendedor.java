@@ -1,4 +1,4 @@
-package ar.edu.link.tpIntegrador;
+package ar.edu.link.TP.trabajoIntegrador.app.DTO;
 
 
 
@@ -45,7 +45,7 @@ public class Vendedor {
 	public void setProductosEnVenta(Carrito productosEnVenta) {
 		this.productosEnVenta = productosEnVenta;
 	}
-	public void agregarProductoEnVenta(Producto producto) {
+	public void agregarProductoEnVenta(productoDTO producto) {
 		this.productosEnVenta.agregarProducto(producto);
 	}
 	public Vendedor(String alias, String mail, int telefono,

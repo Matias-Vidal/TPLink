@@ -3,19 +3,19 @@ package ar.edu.link.TP.trabajoIntegrador.app.DTO;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import org.thymeleaf.expression.Arrays;
 
-import ar.edu.link.tpIntegrador.Carrito;
-import ar.edu.link.tpIntegrador.OrdenDeCompra;
-import ar.edu.link.tpIntegrador.Producto;
-import ar.edu.link.tpIntegrador.Tarjeta;
 
 
 
@@ -32,14 +32,19 @@ public class UsuarioDTO {
 	private String mail;
 	private String tipoDeDocumento;
 	private int nroDeDocumento;
-	@Transient
+	
+	@OneToMany
 	private List<Tarjeta> tarjetasGuardadas;
+	
 	@Transient
 	private List<OrdenDeCompra> comprasRealizadas;
-	@Transient
+	@OneToOne
 	private Carrito carritoDeCompras;
 	
-	
+	public UsuarioDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public UsuarioDTO(String userName, String password, int rol, String nombreYApellido, String mail,
 			String tipoDeDocumento, int nroDeDocumento) {
 		super();
@@ -93,8 +98,8 @@ public class UsuarioDTO {
 	public Carrito getCarritoDeCompras() {
 		return carritoDeCompras;
 	}
-	public void agregarProductoACarrito(Producto producto) {
-		carritoDeCompras.agregarProducto(producto);
+	public void agregarProductoACarrito(productoDTO optional) {
+		carritoDeCompras.agregarProducto(optional);
 	}
 	public void setCarritoDeCompras(Carrito carritoDeCompras) {
 		this.carritoDeCompras = carritoDeCompras;

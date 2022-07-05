@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import ar.edu.link.tpIntegrador.Carrito;
-import ar.edu.link.tpIntegrador.Vendedor;
+import ar.edu.link.TP.trabajoIntegrador.app.DTO.Carrito;
+import ar.edu.link.TP.trabajoIntegrador.app.DTO.Vendedor;
 
 @Repository
 public class repoVendedor {

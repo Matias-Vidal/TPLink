@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
 import ar.edu.link.TP.trabajoIntegrador.app.repo.repoUsuario;
-import ar.edu.link.tpIntegrador.Usuario;
+
 
 @Controller
 @RequestMapping("/login")

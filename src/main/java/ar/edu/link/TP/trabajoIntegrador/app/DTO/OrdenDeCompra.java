@@ -1,17 +1,17 @@
-package ar.edu.link.tpIntegrador;
+package ar.edu.link.TP.trabajoIntegrador.app.DTO;
 
 import java.util.List;
 
 public class OrdenDeCompra {
 	
-	private List<Producto> productosComprados;
+	private List<productoDTO> productosComprados;
 	private double totalEnPesos;
 	private int cantidadDeProductos;
 	private String medioDePago;
 	
 	
 	
-	public OrdenDeCompra(List<Producto> productosComprados, double totalEnPesos, int cantidadDeProductos,
+	public OrdenDeCompra(List<productoDTO> productosComprados, double totalEnPesos, int cantidadDeProductos,
 			String medioDePago) {
 		super();
 		this.productosComprados = productosComprados;
@@ -19,10 +19,10 @@ public class OrdenDeCompra {
 		this.cantidadDeProductos = cantidadDeProductos;
 		this.medioDePago = medioDePago;
 	}
-	public List<Producto> getProductosComprados() {
+	public List<productoDTO> getProductosComprados() {
 		return productosComprados;
 	}
-	public void setProductosComprados(List<Producto> productosComprados) {
+	public void setProductosComprados(List<productoDTO> productosComprados) {
 		this.productosComprados = productosComprados;
 	}
 	public double getTotalEnPesos() {

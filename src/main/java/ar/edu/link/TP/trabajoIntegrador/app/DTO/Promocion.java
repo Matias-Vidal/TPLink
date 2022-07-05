@@ -1,4 +1,4 @@
-package ar.edu.link.tpIntegrador;
+package ar.edu.link.TP.trabajoIntegrador.app.DTO;
 
 public class Promocion {
 	

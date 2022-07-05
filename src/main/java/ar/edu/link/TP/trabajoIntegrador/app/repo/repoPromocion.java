@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import ar.edu.link.tpIntegrador.Promocion;
+import ar.edu.link.TP.trabajoIntegrador.app.DTO.Promocion;
 
 @Repository
 public class repoPromocion {

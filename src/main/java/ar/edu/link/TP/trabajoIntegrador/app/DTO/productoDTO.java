@@ -9,8 +9,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 
-import ar.edu.link.tpIntegrador.Vendedor;
-
 @Entity
 public class productoDTO {
 	
@@ -20,6 +18,7 @@ public class productoDTO {
 	private String nombreDeProducto;
 	
 	private double precioUnitario;//Ya sea de cantidad o de peso
+	
 	@NotBlank
 	private String divisa;//Si esta en dolares(U$D) o en pesos($)
 	@NotBlank
@@ -27,7 +26,9 @@ public class productoDTO {
 	@Transient
 	private Vendedor vendedor;
 	
-	
+	public productoDTO() {
+		super();
+	}
 	
 	public double getPrecioUnitario() {
 		return precioUnitario;

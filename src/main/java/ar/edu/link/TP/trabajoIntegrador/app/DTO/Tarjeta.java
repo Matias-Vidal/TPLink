@@ -1,8 +1,22 @@
-package ar.edu.link.tpIntegrador;
+package ar.edu.link.TP.trabajoIntegrador.app.DTO;
 
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+
+import org.springframework.stereotype.Repository;
+
+@Entity
 public class Tarjeta {
 	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer ID;
+	@NotBlank
 	private String nombreDeTitular; //Como aparece en la tarjeta
+	@NotBlank
 	private int numeroDeTarjeta; // 16 Digitos
 	private String tipoDeTarjeta; // Credito o Debito
 	private String bancoEmisor; 
@@ -10,6 +24,10 @@ public class Tarjeta {
 	private String companiaFinanciera;//visa o mastercard
 	
 	
+	public Tarjeta() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public String getNombreDeTitular() {
 		return nombreDeTitular;
 	}

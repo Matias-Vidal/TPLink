@@ -7,6 +7,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,21 +21,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
+import ar.edu.link.TP.trabajoIntegrador.app.DTO.productoDTO;
 import ar.edu.link.TP.trabajoIntegrador.app.repo.repoProducto;
 import ar.edu.link.TP.trabajoIntegrador.app.repo.repoProductoI;
-import ar.edu.link.tpIntegrador.Producto;
 
 @Controller
-@RequestMapping("UI/producto")
+@RequestMapping("UI/productos")
 public class ProductoControllerUI {
 	
 	@Autowired
-	private repoProducto repo;
+	@Qualifier("Mem")
+	private repoProductoI repo;
 	
 	@GetMapping("")
 	public String list(Model model , Pageable page) {
 		
-		List<Producto> all = new ArrayList<>(repo.all());
+		List<productoDTO> all = new ArrayList<>(repo.all());
 		model.addAttribute("ListadoDeProductos", all);
 		return "ListadoDeProductos";
 	}
@@ -47,18 +49,18 @@ public class ProductoControllerUI {
 		return "producto";
 	}
 	@GetMapping("/category={categoria}")
-	public Collection<Producto> list(@PathVariable("categoria") String categoriaDeProducto){
+	public List<productoDTO> list(@PathVariable("categoria") String categoriaDeProducto){
 		return repo.findByCategory(categoriaDeProducto);
 	}
 	
 	@Transactional
 	@PostMapping("/agregar")
-	public RedirectView post(Producto producto) {
+	public RedirectView post(productoDTO producto) {
 		repo.save(producto);
 		return new RedirectView("/UI/producto");
 	}
 	@DeleteMapping("")
-	public void delete(@RequestBody Producto producto) {
+	public void delete(@RequestBody productoDTO producto) {
 		repo.delete(producto);
 	}
 	
